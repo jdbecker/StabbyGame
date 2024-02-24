@@ -1,0 +1,54 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dl0ktv8cmcl1o"]
+
+[ext_resource type="FontFile" uid="uid://co0g55w5dpfk4" path="res://assets/fonts/Augusta.ttf" id="1_ltkli"]
+[ext_resource type="StyleBox" uid="uid://cy46b60graotw" path="res://assets/styles/button_hover_stylebox.tres" id="2_avhax"]
+[ext_resource type="StyleBox" uid="uid://cb5sd26naea51" path="res://assets/styles/button_stylebox.tres" id="3_hidd1"]
+
+[sub_resource type="Gradient" id="Gradient_c12g2"]
+interpolation_mode = 2
+colors = PackedColorArray(0.458824, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4710d"]
+gradient = SubResource("Gradient_c12g2")
+fill = 1
+fill_from = Vector2(0.507645, 0.470948)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vabfo"]
+texture = SubResource("GradientTexture2D_4710d")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpu0e"]
+bg_color = Color(0.6, 0.6, 0.6, 0.501961)
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.149161, 3.76021e-08, 2.10572e-08, 1)
+Button/constants/outline_size = 12
+Button/font_sizes/font_size = 140
+Button/fonts/font = ExtResource("1_ltkli")
+Button/styles/hover = ExtResource("2_avhax")
+Button/styles/normal = ExtResource("3_hidd1")
+HBoxContainer/constants/separation = 32
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/constants/outline_size = 12
+Label/font_sizes/font_size = 120
+Label/fonts/font = ExtResource("1_ltkli")
+MarginContainer/constants/margin_bottom = 30
+MarginContainer/constants/margin_left = 30
+MarginContainer/constants/margin_right = 30
+MarginContainer/constants/margin_top = 30
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_vabfo")
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_outline_color = Color(1, 1, 1, 1)
+RichTextLabel/constants/outline_size = 8
+RichTextLabel/font_sizes/normal_font_size = 80
+RichTextLabel/fonts/normal_font = ExtResource("1_ltkli")
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_dpu0e")
+TextEdit/colors/font_color = Color(0, 0, 0, 1)
+TextEdit/colors/font_outline_color = Color(1, 1, 1, 1)
+TextEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.501961)
+TextEdit/colors/font_readonly_color = Color(0.149161, 3.76021e-08, 2.10572e-08, 1)
+TextEdit/constants/outline_size = 12
+TextEdit/font_sizes/font_size = 120
+TextEdit/fonts/font = ExtResource("1_ltkli")
+VBoxContainer/constants/separation = 32
