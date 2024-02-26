@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Stabby Game"
+run/main_scene="res://ui/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
@@ -38,3 +39,4 @@ theme/custom="res://assets/styles/theme.tres"
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

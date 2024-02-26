@@ -69,20 +69,18 @@ size_flags_vertical = 3
 placeholder_text = "Enter name here"
 
 [node name="HostButton" type="Button" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 text = "Host"
 
 [node name="JoinButton" type="Button" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 text = "Join"
 
 [node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
 
+[connection signal="text_changed" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/PlayerName" to="." method="_on_player_name_text_changed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
