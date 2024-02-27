@@ -3,16 +3,18 @@ class_name MainMenu extends Control
 @onready var player_name_box := %PlayerName
 
 const ERROR_POPUP := preload("res://ui/error_popup.tscn")
+const LOADING := preload("res://ui/loading.tscn")
 const LOBBY_UI := preload("res://ui/lobby_ui.tscn")
 
-var save_data: SaveData
+
+var data: Data
 var player_name: String:
-	get: return save_data.player_name
+	get: return data.player_name
 
 
 func _ready() -> void:
-	save_data = SaveData.load_data()
-	if save_data == null: save_data = SaveData.new()
+	data = Data.load_data()
+	if data == null: data = Data.new()
 	player_name_box.text = player_name
 
 
@@ -23,12 +25,12 @@ func _on_host_button_pressed():
 		error.desired_message = "You must enter your name before you can host!"
 		add_child(error)
 	else:
-		save_data.save_data()
-		var lobby := LOBBY_UI.instantiate() as LobbyUI
-		lobby.save_data = save_data
-		add_child(lobby)
-		lobby.lobby.host_game.call_deferred()
-		await lobby.ready
+		data.save_data()
+		
+		var lobby_ui := LOBBY_UI.instantiate() as LobbyUI
+		lobby_ui.data = data
+		add_child(lobby_ui)
+		lobby_ui.lobby.host_game()
 
 
 func _on_join_button_pressed():
@@ -38,7 +40,7 @@ func _on_join_button_pressed():
 		error.desired_message = "You must enter your name before you can join!"
 		add_child(error)
 	else:
-		save_data.save_data()
+		data.save_data()
 		print("%s is joining!" % player_name)
 
 
@@ -47,5 +49,5 @@ func _on_quit_button_pressed():
 
 
 func _on_player_name_text_changed():
-	save_data.player_name = player_name_box.text as String
+	data.player_name = player_name_box.text as String
 

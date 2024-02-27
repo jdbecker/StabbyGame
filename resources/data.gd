@@ -1,13 +1,13 @@
-class_name SaveData extends Resource
+class_name Data extends Resource
 
 const FILE_LOCATION := "user://savedata.tres"
 
 @export var player_name: String
 
 
-static func load_data() -> SaveData:
+static func load_data() -> Data:
 	if FileAccess.file_exists(FILE_LOCATION):
-		return ResourceLoader.load(FILE_LOCATION) as SaveData
+		return ResourceLoader.load(FILE_LOCATION) as Data
 	else:
 		return null
 

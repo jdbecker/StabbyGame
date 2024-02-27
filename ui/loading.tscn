@@ -1,0 +1,124 @@
+[gd_scene load_steps=15 format=3 uid="uid://d2l2tqcj6aevy"]
+
+[ext_resource type="Texture2D" uid="uid://0hh8y5jo7epu" path="res://assets/images/circle 2.png" id="1_jx1ov"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrglp"]
+atlas = ExtResource("1_jx1ov")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhmfd"]
+atlas = ExtResource("1_jx1ov")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bfsy"]
+atlas = ExtResource("1_jx1ov")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmjpv"]
+atlas = ExtResource("1_jx1ov")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxt7v"]
+atlas = ExtResource("1_jx1ov")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs0h2"]
+atlas = ExtResource("1_jx1ov")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrayt"]
+atlas = ExtResource("1_jx1ov")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_du3co"]
+atlas = ExtResource("1_jx1ov")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2w00n"]
+atlas = ExtResource("1_jx1ov")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msu3x"]
+atlas = ExtResource("1_jx1ov")
+region = Rect2(432, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atnqt"]
+atlas = ExtResource("1_jx1ov")
+region = Rect2(480, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rl7b"]
+atlas = ExtResource("1_jx1ov")
+region = Rect2(528, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gsik3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrglp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhmfd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bfsy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmjpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxt7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs0h2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrayt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_du3co")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2w00n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msu3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atnqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rl7b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Loading" type="CanvasLayer"]
+layer = 3
+
+[node name="Control" type="Control" parent="."]
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/PanelContainer"]
+modulate = Color(0.149161, 3.76021e-08, 2.10572e-08, 1)
+texture_filter = 1
+position = Vector2(540, 960)
+scale = Vector2(14.4009, 14.4009)
+sprite_frames = SubResource("SpriteFrames_gsik3")
+autoplay = "default"
+frame_progress = 0.0437102

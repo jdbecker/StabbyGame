@@ -4,8 +4,9 @@ const PORT := 7677
 const MAX_CONNECTIONS := 12
 
 var players := {}
+var join_code_thread : Thread
 
-@export var player_info: SaveData
+@export var data: Data
 
 
 func _ready() -> void:
@@ -16,12 +17,13 @@ func host_game() -> void:
 	var peer := ENetMultiplayerPeer.new()
 	var error := peer.create_server(PORT, MAX_CONNECTIONS)
 	assert(error == Error.OK, "Error attempting to create server: %s" % error)
-	_upnp_setup()
 	multiplayer.multiplayer_peer = peer
-	players[1] = player_info.player_name
+	players[1] = data.player_name
+	join_code_thread = Thread.new()
+	join_code_thread.start(_upnp_setup)
 
 
-func _upnp_setup():
+func _upnp_setup() -> String:
 	var upnp = UPNP.new()
 	var discover_result := upnp.discover()
 	assert(discover_result == UPNP.UPNP_RESULT_SUCCESS, "UPNP Discover Failed! Error %s" % discover_result)
@@ -34,6 +36,7 @@ func _upnp_setup():
 	print("Success! Join Address: %s" % ip)
 	print("Join code is: %s" % join_code)
 	print("Decoded join code is: %s" % rebuilt_ip)
+	return join_code
 
 
 func _encode_ip(ip_address: String) -> String:

@@ -22,28 +22,30 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q4o73")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="HeaderHBox" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HeaderHBox" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HeaderHBox"]
+[node name="BackButton" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/HeaderHBox"]
 layout_mode = 2
 text = " < "
 
-[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HeaderHBox"]
+[node name="Title" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/HeaderHBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -51,102 +53,106 @@ theme_override_font_sizes/font_size = 160
 text = "Lobby"
 horizontal_alignment = 1
 
-[node name="JoinCodeHBox" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="JoinCodeHBox" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="JoinCodeLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/JoinCodeHBox"]
+[node name="JoinCodeLabel" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/JoinCodeHBox"]
 layout_mode = 2
 text = "Join code:"
 
-[node name="JoinCode" type="TextEdit" parent="PanelContainer/MarginContainer/VBoxContainer/JoinCodeHBox"]
+[node name="JoinCode" type="TextEdit" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/JoinCodeHBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "ABC123"
+text = "--------"
 editable = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
 scroll_fit_content_height = true
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_wsrgf")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="PlayerList" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer"]
+[node name="PlayerList" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Player1" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
+[node name="Player1" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
 layout_mode = 2
 text = "Player1"
 
-[node name="Player2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
+[node name="Player2" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
 layout_mode = 2
 text = "Player2"
 
-[node name="Player3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
+[node name="Player3" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
 layout_mode = 2
 text = "Player3"
 
-[node name="Player4" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
+[node name="Player4" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
 layout_mode = 2
 text = "Player4"
 
-[node name="Player5" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
+[node name="Player5" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
 layout_mode = 2
 text = "Player5"
 
-[node name="Player6" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
+[node name="Player6" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
 layout_mode = 2
 text = "Player6"
 
-[node name="Player7" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
+[node name="Player7" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
 layout_mode = 2
 text = "Player7"
 
-[node name="Player8" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
+[node name="Player8" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
 layout_mode = 2
 text = "Player8"
 
-[node name="Player9" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
+[node name="Player9" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
 layout_mode = 2
 text = "Player9"
 
-[node name="Player10" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
+[node name="Player10" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
 layout_mode = 2
 text = "Player10"
 
-[node name="Player11" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
+[node name="Player11" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
 layout_mode = 2
 text = "Player11"
 
-[node name="Player12" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
+[node name="Player12" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/PlayerList"]
 layout_mode = 2
 text = "Player12"
 
-[node name="PlayerCountHBox" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="PlayerCountHBox" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 alignment = 1
 
-[node name="PlayerCount" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PlayerCountHBox"]
+[node name="PlayerCount" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/PlayerCountHBox"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "12"
 
-[node name="PlayerCountMax" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PlayerCountHBox"]
+[node name="PlayerCountMax" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/PlayerCountHBox"]
 layout_mode = 2
 text = "/ 12"
 
-[node name="StartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="StartButton" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Get stabbin!"
 icon = ExtResource("2_2s36o")
@@ -156,5 +162,5 @@ expand_icon = true
 [node name="Lobby" type="Node" parent="."]
 script = ExtResource("3_408or")
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HeaderHBox/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/HeaderHBox/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

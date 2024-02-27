@@ -14,8 +14,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d6a2v")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,22 +24,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_pwlja")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 90
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Title" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.458824, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -54,33 +55,33 @@ Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Dagger" type="TextureRect" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="Dagger" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 texture = ExtResource("3_fek0e")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="PlayerName" type="TextEdit" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="PlayerName" type="TextEdit" parent="CanvasLayer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "Enter name here"
 
-[node name="HostButton" type="Button" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HostButton" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Host"
 
-[node name="JoinButton" type="Button" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="JoinButton" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Join"
 
-[node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 
-[connection signal="text_changed" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/PlayerName" to="." method="_on_player_name_text_changed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="text_changed" from="CanvasLayer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/PlayerName" to="." method="_on_player_name_text_changed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
