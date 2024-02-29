@@ -1,16 +1,24 @@
 class_name Lobby extends Node
 
+signal player_connected(peer_id)
+signal player_disconnected(peer_id)
+signal server_disconnected
+
 const PORT := 7677
 const MAX_CONNECTIONS := 12
 
 var players := {}
-var join_code_thread : Thread
+var join_code_thread: Thread
 
 @export var data: Data
 
 
 func _ready() -> void:
-	pass
+	multiplayer.peer_connected.connect(_on_player_connected)
+	multiplayer.peer_disconnected.connect(_on_player_disconnected)
+	multiplayer.connected_to_server.connect(_on_connected_ok)
+	multiplayer.connection_failed.connect(_on_connected_fail)
+	multiplayer.server_disconnected.connect(_on_server_disconnected)
 
 
 func host_game() -> void:
@@ -19,8 +27,49 @@ func host_game() -> void:
 	assert(error == Error.OK, "Error attempting to create server: %s" % error)
 	multiplayer.multiplayer_peer = peer
 	players[1] = data.player_name
+	player_connected.emit(1)
 	join_code_thread = Thread.new()
 	join_code_thread.start(_upnp_setup)
+
+
+func join_game(join_code: String) -> void:
+	var peer := ENetMultiplayerPeer.new()
+	#var error := peer.create_client(_decode_ip(join_code), PORT)
+	var error := peer.create_client("localhost", PORT)
+	assert(error == Error.OK, "Error attempting to join: %s" % error)
+	multiplayer.multiplayer_peer = peer
+
+
+func _on_connected_ok() -> void:
+	var peer_id = multiplayer.get_unique_id()
+	players[peer_id] = data.player_name
+	player_connected.emit(peer_id)
+
+
+func _on_player_connected(id: int) -> void:
+	_register_player.rpc_id(id, data.player_name)
+
+
+@rpc("any_peer", "reliable")
+func _register_player(new_player_name: String) -> void:
+	var new_player_id := multiplayer.get_remote_sender_id()
+	players[new_player_id] = new_player_name
+	player_connected.emit(new_player_id)
+
+
+func _on_player_disconnected(id) -> void:
+	players.erase(id)
+	player_disconnected.emit(id)
+
+
+func _on_connected_fail():
+	multiplayer.multiplayer_peer = null
+
+
+func _on_server_disconnected():
+	multiplayer.multiplayer_peer = null
+	players.clear()
+	server_disconnected.emit()
 
 
 func _upnp_setup() -> String:

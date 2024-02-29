@@ -1,5 +1,7 @@
 class_name ErrorPopup extends Control
 
+signal closed
+
 @export var desired_title: String : set = _set_title
 @export var desired_message: String : set = _set_message
 
@@ -31,4 +33,5 @@ func _set_message(value: String) -> void:
 
 func _on_button_pressed():
 	get_tree().paused = false
+	closed.emit()
 	queue_free()

@@ -1,10 +1,11 @@
 class_name MainMenu extends Control
 
-@onready var player_name_box := %PlayerName
+@onready var player_name_box := %PlayerName as TextEdit
 
 const ERROR_POPUP := preload("res://ui/error_popup.tscn")
 const LOADING := preload("res://ui/loading.tscn")
 const LOBBY_UI := preload("res://ui/lobby_ui.tscn")
+const JOIN_DIALOGUE := preload("res://ui/join_dialogue.tscn")
 
 
 var data: Data
@@ -41,7 +42,16 @@ func _on_join_button_pressed():
 		add_child(error)
 	else:
 		data.save_data()
-		print("%s is joining!" % player_name)
+		var join_dialogue := JOIN_DIALOGUE.instantiate() as JoinDialogue
+		add_child(join_dialogue)
+		join_dialogue.confirm_join.pressed.connect(_join_game.bind(join_dialogue))
+
+
+func _join_game(join_dialogue: JoinDialogue) -> void:
+	var lobby_ui := LOBBY_UI.instantiate() as LobbyUI
+	lobby_ui.data = data
+	lobby_ui.join_code = join_dialogue.join_code.text
+	add_child(lobby_ui)
 
 
 func _on_quit_button_pressed():

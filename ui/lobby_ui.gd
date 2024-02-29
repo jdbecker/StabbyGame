@@ -1,40 +1,62 @@
 class_name LobbyUI extends Control
 
 @export var data: Data : set = _set_data
+@export var join_code: String : set = _set_join_code
 
-@onready var join_code := %JoinCode
-@onready var player_list := %PlayerList
-@onready var player_count := %PlayerCount
+const ERROR_POPUP := preload("res://ui/error_popup.tscn")
+
+@onready var join_code_ui := %JoinCode as TextEdit
+@onready var player_list := %PlayerList as VBoxContainer
+@onready var player_count := %PlayerCount as Label
 @onready var lobby := $Lobby as Lobby
 
 
 func _ready() -> void:
-	lobby.join_code_created.connect(_on_lobby_join_code_created)
+	if join_code:
+		lobby.join_game(join_code)
 
 
 func _process(_delta) -> void:
-	if join_code.text == "--------" and not lobby.join_code_thread.is_alive():
-		join_code.text = lobby.join_code_thread.wait_to_finish()
-		join_code.select_all()
+	if not join_code and not lobby.join_code_thread.is_alive():
+		join_code = lobby.join_code_thread.wait_to_finish()
+		join_code_ui.select_all()
 
 
 func _set_data(value: Data) -> void:
+	data = value
+
 	if not is_node_ready():
 		await ready
 	
-	data = value
 	lobby.data = data
 
 
-func _on_back_button_pressed():
-	queue_free()
+func _set_join_code(value: String) -> void:
+	join_code = value
+
+	if not is_node_ready():
+		await ready
+	
+	join_code_ui.text = join_code
 
 
 func _on_start_button_pressed():
-	print("Starting the game with %s players" % [player_count.text as String])
+	if lobby.players.size() < 6:
+		var error := ERROR_POPUP.instantiate() as ErrorPopup
+		error.desired_title = "Error"
+		error.desired_message = "Not enough players! You must have at least 6 players to start!"
+		add_child(error)
+	else:
+		print("Starting the game with %s players" % [player_count.text as String])
 
 
-func _on_lobby_join_code_created(code) -> void:
-	join_code.editable = true
-	join_code.text = code
-	join_code.editable = false
+func _on_lobby_player_connected(_peer_id) -> void:
+	for child: Node in player_list.get_children():
+		child.queue_free()
+	var player_ids := lobby.players.keys()
+	player_ids.sort()
+	for id in player_ids:
+		var player_label := Label.new()
+		player_label.text = lobby.players[id]
+		player_list.add_child(player_label)
+	player_count.text = str(lobby.players.size())
