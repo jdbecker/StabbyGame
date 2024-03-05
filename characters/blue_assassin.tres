@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://cp8i8nn1vbrk7"]
+
+[ext_resource type="Script" path="res://resources/character.gd" id="1_61cyr"]
+
+[resource]
+script = ExtResource("1_61cyr")
+rank = 1
+clan = 1
+clue_color = 1
+ability_description = "You may force any player to suffer 2 [color=dark_red]Wounds[/color]. If you do, give that player the dagger."
+wound_pool = Array[int]([3, 0, 0])
+wounds = Array[int]([])

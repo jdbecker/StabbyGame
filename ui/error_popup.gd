@@ -10,7 +10,8 @@ signal closed
 
 
 func _ready() -> void:
-	get_tree().paused = true
+	pass
+	#get_tree().paused = true
 
 
 func _set_title(value: String) -> void:

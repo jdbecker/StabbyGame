@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://dj67chq3jgivm"]
+
+[ext_resource type="Texture2D" uid="uid://dtgrl7raq2nrg" path="res://assets/images/dagger.png" id="1_2wets"]
+[ext_resource type="Script" path="res://ui/player_panel.gd" id="1_myxos"]
+[ext_resource type="PackedScene" uid="uid://boq28lqapt1ml" path="res://ui/wound_ui.tscn" id="2_a35sk"]
+[ext_resource type="Resource" uid="uid://bog7e3ppwcb0w" path="res://characters/blue_mage.tres" id="2_llc3h"]
+[ext_resource type="Script" path="res://resources/data.gd" id="3_i7d6b"]
+
+[sub_resource type="Resource" id="Resource_8wsp7"]
+script = ExtResource("3_i7d6b")
+player_name = "Default Player"
+character = ExtResource("2_llc3h")
+has_dagger = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2s0nx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fvojs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o0ipu"]
+
+[node name="PlayerPanel" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1708.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_myxos")
+player_data = SubResource("Resource_8wsp7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="PlayerName" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player Name"
+clip_text = true
+
+[node name="DaggerButton" type="Button" parent="MarginContainer/HBoxContainer/PlayerName"]
+unique_name_in_owner = true
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2s0nx")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fvojs")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o0ipu")
+icon = ExtResource("1_2wets")
+expand_icon = true
+
+[node name="WoundUI1" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_a35sk")]
+visible = false
+layout_mode = 2
+expand_mode = 3
+
+[node name="WoundUI2" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_a35sk")]
+visible = false
+layout_mode = 2
+expand_mode = 3
+
+[node name="WoundUI3" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_a35sk")]
+visible = false
+layout_mode = 2
+expand_mode = 3

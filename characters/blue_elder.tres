@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://bgu48oj0rep21"]
+
+[ext_resource type="Script" path="res://resources/character.gd" id="1_ry5s3"]
+
+[resource]
+script = ExtResource("1_ry5s3")
+rank = 0
+clan = 1
+clue_color = 1
+ability_description = "You may play a [color=dark_blue]Quill[/color] for your team. (While a team has a [color=dark_blue]Quill[/color], the player with the highest rank - rather than the lowest - is their Leader."
+wound_pool = Array[int]([3, 1, 1])
+wounds = Array[int]([])

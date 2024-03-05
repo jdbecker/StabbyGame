@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://bhp1wuppr4aty"]
+
+[ext_resource type="Script" path="res://resources/character.gd" id="1_kd2ge"]
+
+[resource]
+script = ExtResource("1_kd2ge")
+rank = 6
+clan = 1
+clue_color = 1
+ability_description = "You may force the player who attacked you to suffer 1 [color=dark_red]Wound[/color]."
+wound_pool = Array[int]([3, 1, 0])
+wounds = Array[int]([])

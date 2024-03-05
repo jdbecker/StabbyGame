@@ -1,0 +1,185 @@
+[gd_scene load_steps=6 format=3 uid="uid://brea1gq6vhqii"]
+
+[ext_resource type="PackedScene" uid="uid://boq28lqapt1ml" path="res://ui/wound_ui.tscn" id="1_2ryxx"]
+[ext_resource type="Script" path="res://ui/full_character_card_view.gd" id="1_qgeac"]
+[ext_resource type="Resource" uid="uid://bog7e3ppwcb0w" path="res://characters/blue_mage.tres" id="2_jq52i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7bbf"]
+bg_color = Color(0.125911, 0.125911, 0.125911, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynd13"]
+bg_color = Color(0.6, 0.6, 0.6, 0.501961)
+
+[node name="FullCharacterCardView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qgeac")
+character = ExtResource("2_jq52i")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 94.0
+offset_top = 167.0
+offset_right = -94.0
+offset_bottom = -167.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e7bbf")
+
+[node name="ClanLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = -18.0
+offset_top = 219.0
+offset_right = 301.0
+offset_bottom = 309.0
+theme_override_font_sizes/font_size = 80
+text = "Your Clan"
+horizontal_alignment = 1
+
+[node name="Clan" parent="Panel" instance=ExtResource("1_2ryxx")]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 45.0
+offset_right = 45.0
+offset_bottom = 45.0
+clan = 1
+
+[node name="WoundsLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 361.0
+offset_top = 304.0
+offset_right = 608.0
+offset_bottom = 394.0
+theme_override_font_sizes/font_size = 80
+text = "Wounds"
+horizontal_alignment = 1
+
+[node name="Line2D" type="Line2D" parent="Panel"]
+position = Vector2(653, 40)
+points = PackedVector2Array(9, 6, -33, 318, 9, 630)
+width = 8.0
+
+[node name="Rank" parent="Panel" instance=ExtResource("1_2ryxx")]
+layout_mode = 0
+offset_left = 667.0
+offset_top = 45.0
+offset_right = 667.0
+offset_bottom = 45.0
+desired_label = "7"
+
+[node name="Wound1" parent="Panel" instance=ExtResource("1_2ryxx")]
+layout_mode = 0
+offset_left = 667.0
+offset_top = 270.0
+offset_right = 667.0
+offset_bottom = 270.0
+clan = 1
+
+[node name="Wound2" parent="Panel" instance=ExtResource("1_2ryxx")]
+layout_mode = 0
+offset_left = 668.0
+offset_top = 495.0
+offset_right = 668.0
+offset_bottom = 495.0
+desired_label = "?"
+
+[node name="AbilityDescriptionLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 565.0
+offset_right = 613.0
+offset_bottom = 702.0
+theme_override_font_sizes/font_size = 60
+text = "When you take your 
+rank token as a Wound:"
+
+[node name="AbilityDescription" type="RichTextLabel" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 37.0
+offset_top = 711.0
+offset_right = 856.0
+offset_bottom = 1167.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ynd13")
+bbcode_enabled = true
+text = "You may attempt to predict the leader of the clan who will win. If you are right, you win instead! (Also, you have no team, but you can take any color wounds you want.)"
+
+[node name="ClueColorLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 603.0
+offset_top = 1175.0
+offset_right = 915.0
+offset_bottom = 1358.0
+theme_override_font_sizes/font_size = 80
+text = "Your
+Clue Color"
+horizontal_alignment = 1
+
+[node name="ClueColor" parent="Panel" instance=ExtResource("1_2ryxx")]
+layout_mode = 0
+offset_left = 667.0
+offset_top = 1361.0
+offset_right = 667.0
+offset_bottom = 1361.0
+clan = 1
+
+[node name="NeighborName" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -18.0
+offset_top = 1175.0
+offset_right = 294.0
+offset_bottom = 1265.0
+theme_override_font_sizes/font_size = 80
+text = "Neighbor's"
+horizontal_alignment = 1
+
+[node name="NeighborClueColorLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = -21.0
+offset_top = 1268.0
+offset_right = 291.0
+offset_bottom = 1358.0
+theme_override_font_sizes/font_size = 80
+text = "Clue Color"
+horizontal_alignment = 1
+
+[node name="NeighborClueColor" parent="Panel" instance=ExtResource("1_2ryxx")]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 1361.0
+offset_right = 45.0
+offset_bottom = 1361.0
+
+[node name="HideButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -96.0
+offset_right = 150.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Hide"
+
+[connection signal="pressed" from="Panel/HideButton" to="." method="_on_hide_button_pressed"]

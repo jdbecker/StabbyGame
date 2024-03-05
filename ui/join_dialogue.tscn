@@ -6,8 +6,17 @@
 layer = 2
 script = ExtResource("1_3gc06")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
 process_mode = 2
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -20,25 +29,25 @@ offset_bottom = 292.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Join code:"
 
-[node name="JoinCode" type="TextEdit" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="JoinCode" type="TextEdit" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 scroll_fit_content_height = true
 
-[node name="ConfirmJoin" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ConfirmJoin" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "OK"
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ConfirmJoin" to="." method="_on_confirm_join_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/MarginContainer/VBoxContainer/ConfirmJoin" to="." method="_on_confirm_join_pressed"]

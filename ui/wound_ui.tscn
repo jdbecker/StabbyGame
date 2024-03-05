@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://boq28lqapt1ml"]
+
+[ext_resource type="Script" path="res://ui/wound_ui.gd" id="1_utiqd"]
+[ext_resource type="Texture2D" uid="uid://cml60fhemmrhq" path="res://assets/images/hi-res-circle.png" id="2_0qs8o"]
+
+[node name="WoundUI" type="TextureRect"]
+unique_name_in_owner = true
+self_modulate = Color(0.391819, 0.391819, 0.391819, 1)
+texture_filter = 1
+offset_right = 180.0
+offset_bottom = 180.0
+texture = ExtResource("2_0qs8o")
+stretch_mode = 4
+script = ExtResource("1_utiqd")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1

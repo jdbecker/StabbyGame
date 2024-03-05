@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://mm06kirjmojj"]
+
+[ext_resource type="Script" path="res://resources/character.gd" id="1_grifv"]
+
+[resource]
+script = ExtResource("1_grifv")
+rank = 3
+clan = 2
+clue_color = 2
+ability_description = "(Only used if you intervened) You may force the player for whom you intervened to suffer or heal 1 [color=dark_red]Wound[/color]."
+wound_pool = Array[int]([3, 0, 0])
+wounds = Array[int]([])

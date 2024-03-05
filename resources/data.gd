@@ -3,6 +3,8 @@ class_name Data extends Resource
 const FILE_LOCATION := "user://savedata.tres"
 
 @export var player_name: String
+@export var character: Character
+@export var has_dagger: bool = false
 
 
 static func load_data() -> Data:

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://r87i4njtxhlm"]
+
+[ext_resource type="Script" path="res://resources/character.gd" id="1_yqlmv"]
+
+[resource]
+script = ExtResource("1_yqlmv")
+rank = 2
+clan = 2
+clue_color = 1
+wound_pool = Array[int]([3, 0, 0])
+wounds = Array[int]([])

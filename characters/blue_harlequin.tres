@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://c821hab6yqhll"]
+
+[ext_resource type="Script" path="res://resources/character.gd" id="1_l740u"]
+
+[resource]
+script = ExtResource("1_l740u")
+rank = 2
+clan = 1
+clue_color = 2
+ability_description = ""
+wound_pool = Array[int]([3, 0, 0])
+wounds = Array[int]([])

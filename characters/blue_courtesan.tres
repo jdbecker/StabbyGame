@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://ubrftf37p25k"]
+
+[ext_resource type="Script" path="res://resources/character.gd" id="1_j0220"]
+
+[resource]
+script = ExtResource("1_j0220")
+rank = 8
+clan = 1
+clue_color = 1
+ability_description = "You may give a [color=dark_blue]Fan[/color] to a player. (Players cannot intervene for players with a [color=dark_blue]Fan[/color].)"
+wound_pool = Array[int]([3, 1, 0])
+wounds = Array[int]([])
